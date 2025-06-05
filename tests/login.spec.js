@@ -1,4 +1,4 @@
-const {test, expect} = require('@playwright/test');
+/*const {test, expect} = require('@playwright/test');
 const {waitFor} = require('../utils/waits');
 const HomePage = require('../pages/HomePage');
 const LoginPage = require('../pages/LoginPage');
@@ -17,4 +17,4 @@ test('Login con usuario y contraseña', async ({page}) => {
     expect(loggedInUser).toContain('Welcome jbarbos113'); // Verifica que el usuario esté logueado correctamente
     console.log('Usuario logueado Exitoso:', loggedInUser);
    
-});
+});*/

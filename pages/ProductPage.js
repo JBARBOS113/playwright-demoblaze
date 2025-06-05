@@ -1,23 +1,22 @@
 class ProductPage {
   constructor(page) {
     this.page = page;
-    this.productName = page.locator('.name');
-    this.productPrice = page.locator('.price-container');
     this.addToCartButton = page.locator('a', { hasText: 'Add to cart' });
+    this.productNameLocator = page.locator('.name');
+    this.preceLocator = page.locator('.price-container');
   }
 
   async getProductName() {
-    return await this.productName.textContent();
+  
+    return await  this.productNameLocator.textContent();
   }
-
   async getProductPrice() {
-    return await this.productPrice.textContent();
+    
+    return await this.preceLocator.textContent();
   }
-  async clickAddToCart() {
-    await this.addToCartButton.waitFor({ state: 'visible' });
+  async addToCart() {
     await this.addToCartButton.click();
-    await this.page.waitForTimeout(1000)
+    await this.page.waitForEvent('dialog').then(dialog => dialog.accept());
   }
 }
-
-module.exports = ProductPage;
+export default ProductPage;

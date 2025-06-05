@@ -1,5 +1,14 @@
+# Node.js
 node_modules/
+.env
+*.log
+
+# Playwright
 test-results/
 playwright-report/
-.env
-# Ignore logs
+playwright/.cache/
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

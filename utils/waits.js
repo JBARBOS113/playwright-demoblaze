@@ -4,3 +4,4 @@ export async function waitFor(seconds, page) {
 export async function waitForElement(selector, page) {
   await page.waitForSelector(selector);
 }
+

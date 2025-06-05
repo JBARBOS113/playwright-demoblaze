@@ -1,33 +1,43 @@
+import { expect } from "@playwright/test";
+import { waitFor } from "../utils/waits";
+
 class HomePage {
   constructor(page) {
     this.page = page;
-    this.laptopsCategory = page.locator('xpath=//a[@id="itemc" and contains(text(), "Laptops")]');
-    this.firstProduct = page.locator('.card-title a').first();
-    this.looktoCartButton = page.locator('#cartur');
-    this.loginButton = page.locator('#login2');
-    this.validatelogin = page.locator('#nameofuser');
+    this.signupLink = page.locator('#signin2');
+    this.logoutLink = page.locator('#logout2');
+    this.loginLink = page.locator('#login2');
+    this.laptopsCategory = page.locator('a[onclick="byCat(\'notebook\')"]');
+    this.productByName = (name) => page.locator('.card-title a', { hasText: name });
+    this.cartLink = page.locator('#cartur');
+    this.loggedInUser = page.locator('#nameofuser');
   }
 
   async goto() {
-    await this.page.goto('https://www.demoblaze.com/');
+    await this.page.goto('/');
+    await waitFor(4, this.page);
   }
 
-  async selectLaptopsCategory() {
-    await this.laptopsCategory.click();
+  async goToSignUp() {
+    await this.signupLink.click();
   }
-
-  async selectFirstProduct() {
-    await this.firstProduct.click();
-  }
-  async goToCart() {
-    await this.looktoCartButton.click();
+  async goToLogout() {
+    await this.logoutLink.click();
   }
   async goToLogin() {
-    await this.loginButton.click();
+    await this.loginLink.click();
   }
-  async validateLogin() {
-    return await this.validatelogin.textContent();
+  
+  async goToCart() {
+    await this.cartLink.click();
+  }
+
+  async selectCategory(category = 'notebook') {
+    await this.page.locator(`#itemc[onclick="byCat('${category}')"]`).click();
+  }
+
+  async selectProductByName(name) {
+    await this.productByName(name).click();
   }
 }
-
-module.exports = HomePage;
+export default HomePage;

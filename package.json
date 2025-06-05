@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+   "start": "npx playwright install && npx playwright test --project=chromium",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:report": "npx playwright show-report",
+    "test:debug": "npx playwright test --debug"
   },
   "keywords": [],
   "author": "",

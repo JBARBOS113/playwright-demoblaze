@@ -1,0 +1,11 @@
+1: para ejecutar un solo caso de prueba 
+   npx playwright test tests/login.spec.js
+
+2: Para ejecutar todos los casos de pruebas
+   npx playwright test tests/
+   npx test
+
+3: Para ver el reporte de ejecucion 
+   npx playwright show-report
+
+4:
