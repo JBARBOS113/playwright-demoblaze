@@ -6,7 +6,7 @@ class CartPage {
   }
 
   async verifyProductInCart(name) {
-    await this.productNames.locator(`text=${name}`).waitFor();
+    await this.productNames.locator(`text=${name}`).waitFor({ state: 'visible' });
   }
 
   async proceedToCheckout() {

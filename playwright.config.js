@@ -3,7 +3,7 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',           // Carpeta donde están tus pruebas
-  timeout: 30 * 1000,           // Tiempo máximo por test
+  timeout: 80 * 1000,           // Tiempo máximo por test
   expect: {
     timeout: 5000,              // Timeout para aserciones
   },

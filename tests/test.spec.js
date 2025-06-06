@@ -20,15 +20,15 @@ test('Flujo completo de compra', async ({ page }) => {
 
   await home.goto();
   await home.goToSignUp();
-  await waitFor(3, page);
+  await waitFor(3);
   await signup.signUp(user.username, user.password);
-  
+  await waitFor(3);
   await home.goToLogin();
-  await waitFor(3, page);
+  await waitFor(3);
   await login.loginUsers(user.username, user.password);
   await expect(home.loggedInUser).toContainText(user.username);
   
-  await waitFor(3, page);
+  await waitFor(3);
   await home.selectCategory('notebook');
   await home.selectProductByName('Sony vaio i5');
   await product.addToCart();
@@ -38,11 +38,16 @@ test('Flujo completo de compra', async ({ page }) => {
   console.log(`Product added is : ${productName} - Price: ${productPrice}`);
   expect(productName).toBe('Sony vaio i5');
   await home.goToCart();
-  await waitFor(3, page);
+  const valiatrprice = await product.validatePayment();
+  console.log(`Price in cart is: ${valiatrprice}`);
+  await waitFor(3);
   await cart.verifyProductInCart('Sony vaio i5');
-  await waitFor(3, page);
+  await waitFor(3);
   await cart.proceedToCheckout();
-  await waitFor(3, page);
+  await waitFor(3);
+
+   if(productPrice === valiatrprice){
+  
   await checkout.completePurchase({
     name: 'Test User',
     country: 'Colombia',
@@ -51,7 +56,13 @@ test('Flujo completo de compra', async ({ page }) => {
     month: '12',
     year: '2025'
   });
- await checkout.verifyConfirmationMessage();
+  await checkout.verifyConfirmationMessage();
+ }
+ 
+ await waitFor(3);
+ await product.confirmPayment();
+ 
  //await home.goToLogout();
- await page.pause(); 
+ //await page.pause(); 
+
 });

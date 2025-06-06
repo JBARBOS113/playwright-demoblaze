@@ -9,3 +9,15 @@
    npx playwright show-report
 
 4:
+
+
+
+
+
+
+GIT
+1: git add
+2: Git git commit -m "message"
+3: git branch -M main  para confirmar la rama
+4: git push -u origin main para subir los cambios a github
+5: git
