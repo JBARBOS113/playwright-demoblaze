@@ -13,4 +13,4 @@ class CartPage {
     await this.placeOrderBtn.click();
   }
 }
-export default CartPage;
+export default CartPage; 

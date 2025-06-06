@@ -8,7 +8,10 @@ import CheckoutPage from '../pages/CheckoutPage.js';
 import { generateUser } from '../utils/dataGenerator.js';
 import { waitFor } from '../utils/waits.js';
 
+
+
 test('Flujo completo de compra', async ({ page }) => {
+
   const home = new HomePage(page);
   const login = new LoginPage(page);
   const signup = new SignUpPage(page);

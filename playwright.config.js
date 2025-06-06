@@ -1,5 +1,5 @@
 // playwright.config.js
-import { defineConfig } from '@playwright/test';
+import { defineConfig , devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',           // Carpeta donde están tus pruebas
@@ -33,6 +33,12 @@ export default defineConfig({
       name: 'webkit',
       use: { browserName: 'webkit' },
     },*/
+    {
+      name: 'Mobile Safari',
+      use: {
+        ...devices['iPhone 13'],
+      },
+    }
   ],
 });
 // Puedes agregar más configuraciones según tus necesidades
